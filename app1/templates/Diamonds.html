@@ -1,0 +1,212 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if sessionseller %}
+<!--Add Product Modal -->
+<button type="button" class="btn btn-outline-dark ml-5 mt-3 " data-toggle="modal" data-target="#exampleModalScrollable">
+    Add Product
+</button>
+
+
+<div class="modal fade show" style="margin-top: 70px;" id="exampleModalScrollable" tabindex="-1"  role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+<div class="modal-dialog modal-dialog-scrollable" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalScrollableTitle">Add Product</h5>
+      <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button> -->
+    </div>
+    <div class="modal-body">
+      
+        <div class="col-md-12 col-lg-12 col-xl-12s  card m-auto" style="border: 0;">
+          <form  method="POST" enctype="multipart/form-data" style="border: 0;">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="demo_overview">Select Category</label>
+                  <select id="demo_overview" name = "product_category" class="form-control" data-role="select-dropdown">
+                    {% for i in ab %}
+                    <option value="{{i.id}}"
+                    selected="selected">{{i.name}}</option>
+                    {% endfor %} 
+                </select>
+                
+              </div>
+              <div class="form-outline">
+                <label class="form-label" for="form3Example3">Product Name</label>
+                <input
+                  type="text"
+                  name="productname"
+                  id="#"
+                  class="form-control form-control-lg"
+                  placeholder="Product Name" />
+              </div>
+              <!-- Email input -->
+              <div class="form-outline">
+                <label class="form-label" for="form3Example3">Product Price</label>
+                <input
+                  type="text"
+                  id="#"
+                  name="productPrice"
+                  class="form-control form-control-lg"
+                  placeholder="Product Price" />
+              </div>
+              <!-- number input -->
+              <div class="form-outline">
+                <label class="form-label" for="form3Example3"> Product Quantity</label>
+                <input
+                  type="number"
+                  id="#"
+                  name="productQuantity"
+                  class="form-control form-control-lg"
+                  placeholder="Product Quantity" />
+              </div>
+              <!--address input-->
+              <div class="form-outline">
+                <label class="form-label" for="form3Example4">Product Description</label>
+                <textarea
+                  type="text"
+                  id="form3Example4" rows="2"
+                  name="discription"
+                  class="form-control form-control-lg"
+                  placeholder="Enter Your Company Address"></textarea>
+              </div>
+              <br>
+              <div class="form-outline">
+                <label class="form-label" for="form3Example3"> Product Image</label>
+                <input
+                  type="file"
+                  id="#"
+                  name="productImage"
+                  class="form-control form-control-lg" style="border: 0; padding: 0;" />
+              </div>          
+              <div class="form-outline">
+                <label class="form-label" for="form3Example3"> Start date</label>
+                <br>
+                <input
+                  type="date"
+                  id="#"
+                  name="startdate"
+                  class="form-control" style="border: 0; padding: 0;" />
+              </div>          
+              <div class="form-outline">
+                <label class="form-label" for="form3Example3"> End date</label>
+                <br>
+                <input
+                  type="date"
+                  id="#"
+                  name="enddate"
+                  class="form-control " style="border: 0; padding: 0;" />
+              </div>          
+              <div class="text-center text-lg-start mt-2 pt-2 mb-5">
+                <button type="submit" class="btn btn-success btn-lg" >Add Product</button>
+              </div>
+            </form>
+          </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+  </div>
+</div>
+</div>
+{% endif %}
+<!-- Add product modal end -->
+
+
+  <!-- item section -->
+
+  <div class="item_section layout_padding2">
+    <div class="container">
+      
+      <div class="item_container">
+        {% for i in ab %}
+        <a  href="{% url 'productcat' i.id %}">
+        <div class="box">
+          <div class="price">
+            <h6>
+              Best PRICE
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="{{i.img.url}}" alt="">
+          </div>
+          <div class="name">
+            <h5>
+              {{i.name}}
+            </h5>
+          </div>
+        </div>
+      </a>
+        {% endfor %}
+        
+      </div>
+    
+    </div>
+  </div>
+
+  <!-- end item section -->
+
+  <!-- price section -->
+
+  <section class="price_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Our Diamonds
+        </h2>
+      </div>
+      <div class="price_container">
+        {% comment %} <div class="box">
+          <div class="name">
+            <h6>
+              Diamond 
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="{% static 'images/p-1.png' %}" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              <span>1000.00</span>
+            </h5>
+            <a href="{% url 'singleproduct' %}">
+              BID
+            </a>
+          </div>
+        </div> {% endcomment %}
+        {% for i in productdata  %}
+        <div class="box">
+          
+          <div class="name">
+            <h6>
+              {{i.productName}} 
+            </h6>
+          </div>
+          <div class="img-box">
+            <img src="{{i.productImage.url}}" alt="">
+          </div>
+          <div class="detail-box">
+            <h5>
+              <span>{{i.productPrice}}</span>
+            </h5>
+            {% if sessionvendor %}
+            <a href="#">
+              BID
+            </a>
+            {% else %}
+            <a href="{% url 'singleproduct' i.id %}">
+              BiD
+            </a>
+            {% endif %}
+          </div> 
+        </div>
+        {% endfor %}
+       
+      </div>
+    </div>
+  </section>
+  <!-- end price section -->
+  {% endblock%}

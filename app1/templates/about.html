@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <!-- about section -->
+
+  <section class="about_section layout_padding2-top layout_padding-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                DIAMOND COLOR
+              </h2>
+            </div>
+            <p style="text-align: justify;">
+              Diamond Color Actually Means Lack of Color The diamond color evaluation of most gem-quality diamonds is based on the absence of color. A chemically pure and structurally perfect diamond has no hue, like a drop of pure water, and consequently, a higher value. GIA’s D-to-Z diamond color-grading system measures the degree of colorlessness by comparing a stone under controlled lighting and precise viewing conditions to masterstones stones of established color value.
+            </p>
+            <p style="text-align: justify;">
+              GIA’s diamond D-to-Z color-grading scale is the industry’s most widely accepted grading system. The scale begins with the letter D, representing colorless, and continues, with increasing presence of color, to the letter Z.Many of these color distinctions are so subtle that they are invisible to the untrained eye; however, these distinctions make a very big difference in diamond quality and price.
+            </p>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="img-box">
+            <img src={% static 'images/aboutdiamond.gif' %} alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- end about section -->
+  <section class="ring_section layout_padding">
+    
+    <div class="container p-5" style="border-radius: 30px; background-color: lightgray; box-sizing: border-box;">
+      <div class="ring_container layout_padding2">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="detail-box" style="background-color: white; border-radius: 30px; padding: 30px;">
+              <h4>
+                DIAMOND CLARITY
+              </h4>
+              <p style="text-align: justify;">
+                Diamond Clarity Refers to the Absence of Inclusions and Blemishes Natural diamonds are the result of carbon exposed to tremendous heat and pressure deep in the earth. This process can result in a variety of internal characteristics called ‘inclusions’ and external characteristics called ‘blemishes.’
+              </p>
+              <p style="text-align: justify;">
+                The GIA Diamond Clarity Scale has 6 categories, some of which are divided, for a total of 11 specific grades.
+              </p>
+              <ul>
+                <li>
+                  Flawless (FL) No inclusions and no blemishes visible under 10x magnification
+                </li>
+                <li>
+                  Internally Flawless (IF) No inclusions visible under 10x magnification
+                </li>
+                <li>
+                  Very, Very Slightly Included (VVS1 and VVS2) Inclusions so slight they are difficult for a skilled grader to see under 10x magnification
+                </li>
+                <li>
+                  Very Slightly Included (VS1 and VS2) Inclusions are observed with effort under 10x magnification, but can be characterized as minor
+                </li>
+                <li>
+                  Slightly Included (SI1 and SI2) Inclusions are noticeable under 10x magnification
+                </li>
+                <li>
+                  Included (I1, I2, and I3) Inclusions are obvious under 10x magnification which may affect transparency and brilliance
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="img-box">
+              <img src={% static 'images/diamondgif2.gif' %} style="border-radius: 20px;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

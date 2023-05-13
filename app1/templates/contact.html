@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+  <!-- contact section -->
+
+  <section class="contact_section layout_padding">
+    <div class="container ">
+      <div class="">
+        <h2 class="">
+          Contact Us
+        </h2>
+      </div>
+
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          {% if sessionbuyer %}
+          <form method="POST">
+            {% csrf_token %}
+            
+            <div>
+              <input type="text" name="name" value="{{name.name}}" readonly/>
+            </div>
+            <div>
+              <input type="email" name="email" value="{{name.email}}" readonly />
+            </div>
+            <div>
+              <input type="text" name="number" value="{{name.number}}" readonly />
+            </div>
+            <div>
+              <input type="text" class="message-box" name="message" placeholder="Message" />
+            </div>
+            <div class="d-flex ">
+              <button type="submit">
+                SEND
+              </button>
+            </div>
+          </form>
+          {% elif sessionseller %}
+          <form method="POST">
+            {% csrf_token %}
+            
+            <div>
+              <input type="text" name="name" value="{{name.name}}" readonly/>
+            </div>
+            <div>
+              <input type="email" name="email" value="{{name.email}}" readonly />
+            </div>
+            <div>
+              <input type="text" name="number" value="{{name.number}}" readonly />
+            </div>
+            <div>
+              <input type="text" class="message-box" name="message" placeholder="Message" />
+            </div>
+            <div class="d-flex ">
+              <button type="submit">
+                SEND
+              </button>
+            </div>
+          </form>
+          {% else %}
+          <form method="POST">
+            {% csrf_token %}
+            
+            <div>
+              <input type="text" name="name" placeholder="Name" />
+            </div>
+            <div>
+              <input type="email" name="email" placeholder="Email" />
+            </div>
+            <div>
+              <input type="text" name="number" placeholder="Phone" />
+            </div>
+            <div>
+              <input type="text" class="message-box" name="message" placeholder="Message" />
+            </div>
+            <div class="d-flex ">
+              <button type="submit">
+                SEND
+              </button>
+            </div>
+          </form>
+          {% endif %}
+        </div>
+        <div class="col-md-6">
+          <div class="map_container">
+            <div class="map-responsive">
+              <img src={% static 'images/formimg.jpg' %} width="100%">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if messagekey %}
+  <script>alert("{{ messagekey }}")</script>
+  {% endif %}
+  <!-- end contact section -->
+
+{% endblock %}

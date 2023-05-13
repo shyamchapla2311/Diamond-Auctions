@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="heading_container p-5 bg-secondary">
+    <h2 class="mx-auto text-white">
+      MY ORDER'S
+    </h2>
+  </div>
+
+   <!-- order details card end -->
+   <section class="mb-5 bg-secondary" style="border-radius: 40px;">
+    <div class="container-fluid" >
+      <div class="row mt-5 p-5">
+        {% for i in orderdata %}
+        <div class="col-lg-4">
+            <div class="card p-3 mt-2" style="border-radius: 30px;">
+              <div class="p-5">
+                <img class="card-img-top proorder p-3" src="{{i.prouctimg.url}}" alt="Card image cap" width="100%" style="border-radius: 30px;">
+              </div>
+                <div class="card-block">
+                  <h4 class="card-title">{{i.productname}}</h4>
+                  <p class="card-text">{{i.productdic}}</p>
+                </div>
+                <ul class="list-group list-group-flush mt-3">
+                  <li class="list-group-item">
+                   <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <td></td>
+                            <td>{{i.orderid}}</td>
+                        </tr>
+                        <tr>
+                            <th>Buyer Name</th>
+                            <td></td>
+                            <td>{{i.buyername}}</td>
+                        </tr>
+                        <tr>
+                            <th>Product Amount</th>
+                            <td>&nbsp;&nbsp;</td>
+                            <td>{{i.productamt}}</td>
+                        </tr>
+                        <tr>
+                            <th>BiD Amount</th>
+                            <td></td>
+                            <td>{{i.bidamt}}</td>
+                        </tr>
+                        <tr>
+                            <th>Date </th>
+                            <td></td>
+                            <td>{{i.dateofbid}}</td>
+                        </tr>
+                        {% if i.pyment == True %}
+                        <tr>
+                          <th>Pyment </th>
+                          <td></td>
+                          <td> Done </td>
+                          </tr>
+                      {% else %}
+                      
+                        <tr>
+                          <th>Pyment </th>
+                          <td></td>
+                          <td><a  href="{% url 'direct_buy' i.orderid %}" > Pay</a></td>
+                      </tr>
+                      {% endif %}
+                    </thead>
+                   </table>
+                </li>
+                  
+                
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  <!-- single product card end -->
+
+  {% endblock %}
